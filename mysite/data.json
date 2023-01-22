@@ -1,0 +1,79 @@
+[
+{   
+    "Name1": "Kathmandu",
+    "Description": "lorem ipsum",
+	"MustVisitPlaces": {
+        "first":"Patan Durbar Square",
+        "second":"Basantapur Durbar Square",
+        "third":"Bhaktapur Durbar Square",
+        "forth":"Swoyambhunath Stupa",
+        "fifth":"Boudhanath Stupa"
+        
+        
+       
+        
+    }
+},
+{
+	"Name": "kathmandu",
+    "Description": "lorem ipsum",
+	"MustVisitPlaces": [
+        "Patan Durbar Square",
+        "Basantapur Durbar Square",
+        "Bhaktapur Durbar Square",
+        "Swoyambhunath Stupa",
+        "Boudhanath Stupa"
+    ]
+},
+{
+    "Name": "Pokhara",
+    "Description": "lorem ipsum",
+    "MustVisitPlaces": [
+        "Lakeside",
+        "Majikuna",
+        "Sarankot"
+    ]
+},
+{
+    "Name": "pokhara",
+    "Description": "lorem ipsum",
+    "MustVisitPlaces": [
+        "Lakeside",
+        "Majikuna",
+        "Sarankot"
+    ]
+},
+{
+	"Name": "Chitwan",
+    "Description": "lorem ipsum",
+    "MustVisitPlaces": "lorem ipsum"
+},
+{
+	"Name": "chitwan",
+    "Description": "lorem ipsum",
+    "MustVisitPlaces": "lorem ipsum"
+},
+{
+	"Name": "Mustang",
+    "Description": "lorem ipsum",
+    "MustVisitPlaces": "lorem ipsum"
+},
+{
+	"Name": "mustang",
+    "Description": "lorem ipsum",
+    "MustVisitPlaces": "lorem ipsum"
+},
+{
+	"Name": "Langtang",
+    "Description": "lorem ipsum",
+    "MustVisit ": "lorem ipsum"
+},
+{
+	"Name": "langtang",
+    "Description": "lorem ipsum",
+    "MustVisitPlaces": "lorem ipsum"
+}
+]
+
+
+

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="description"
+    content="Your best personal tour guide and planner with automated suggestions and booking assistance.">
+  <meta name="keywords" content="Tourism, Nepal, Travel, Hotels, Lights, ">
+  <meta name="author" content="Backoders">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!--Main Css-->
+  <link rel="stylesheet" href="{% static '/styles/main.css' %}"/>
+  <!--Title-->
+  <title>Login Batasey</title>
+</head>
+
+<body class="flights-body">
+    <nav class="navbar navbar-expand-lg collapse navbar-light bg-light sticky-top d-flex container mt-2">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../static/images/menuwidelogo.svg" alt="Tripadvisor logo" width="100%" height="40px">
+            </a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./flights.html">
+                            Flights</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'hotels' %}">Hotels</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'events' %}">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'hotels' %}">Tours</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./eateries.html">Eateries</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./discover.html">Discover</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav me-left">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./login.html">Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><span id="lang">En</span> | <span id="curr">NPR</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="flights-1" id="f-1">
+        <div class="container">
+            <div class="flights-banner mt-4">
+                <div class="search-bar">
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search"
+                            placeholder="Search Flights, Airport Schedules, Airlines, Airports, Flight No"
+                            aria-label="Search">
+                        <button class="btn search-btn" type="submit" id="searchbtn">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="flights-2" id="f-2">
+        <div class="container" style="border-radius: 20px; background-color: #f6f7f8; box-shadow: #000000 2px;">
+            <div class="row">
+                <div class="col">
+                    <h2 class="me-auto text-dark text-left" style="font-size: 3rem; padding: 30px 0px 0px 30px;">Find
+                        the <span style="color: #ff6b6b; font-weight: bold;">fastest</span><span class=""> &</span><br>
+                        <span class="text-primary" style="font-weight:bold;">cheapest </span>flights
+                    </h2>
+                </div>
+                <div class="col">
+                    <h2 class="me-auto text-dark text-left" style="font-size: 3rem; padding: 30px 0px 0px 30px;">Find
+                        the best<span class="text-primary" style="font-weight: bold;"> Deals</span><span class="">
+                            &</span><br>
+                        <span style="color:#ff6b6b; font-weight: bold;">affordable </span>offers
+                    </h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="wrapper bg-white">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div
+                                class="form-group border-bottom d-flex align-items-center justify-content-between flex-wrap">
+                                <label class="option my-sm-0 my-2">
+                                    <input type="radio" name="radio" checked>Round Trip
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="option my-sm-0 my-2">
+                                    <input type="radio" name="radio">One Way
+                                    <span class="checkmark"></span>
+                                </label>
+                                <div class="d-flex align-items-center my-sm-0 my-2">
+                                    <a href="#" class="text-decoration-none">
+                                        Multi-city/Stopovers <span class="fas fa-angle-right ps-2 text-primary"></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="form-group d-sm-flex margin">
+                                <div
+                                    class="d-flex align-items-center flex-fill me-sm-1 my-sm-0 my-4 border-bottom position-relative">
+                                    <input type="text" required placeholder="From" class="form-control">
+                                    <div class="label" id="from"></div>
+                                    <span class="fas fa-dot-circle text-muted"></span>
+                                </div>
+                                <div
+                                    class="d-flex align-items-center flex-fill ms-sm-1 my-sm-0 my-4 border-bottom position-relative">
+                                    <input type="text" required placeholder="To" class="form-control">
+                                    <div class="label" id="to"></div>
+                                    <span class="fa-solid fa-map-pin text-muted"></span>
+                                </div>
+                            </div>
+                            <div class="form-group d-sm-flex margin">
+                                <div
+                                    class="d-flex align-items-center flex-fill me-sm1 my-sm-0 border-bottom position-relative">
+                                    <input type="date" required placeholder="Depart Date" class="form-control">
+                                    <div class="label" id="depart"></div>
+                                </div>
+                                <div
+                                    class="d-flex align-items-center flex-fill ms-sm-1 my-sm-0 my-4 border-bottom position-relative">
+                                    <input type="date" required placeholder="Return Date" class="form-control">
+                                    <div class="label" id="return"></div>
+                                </div>
+                            </div>
+                            <div class="form-group border-bottom d-flex align-items-center position-relative">
+                                <input type="text" required placeholder="Traveller(s)" class="form-control">
+                                <div class="label" id="psngr"></div>
+                                <span class="fas fa-users text-muted"></span>
+                            </div>
+                            <div class="form-group my-3">
+                                <button type="submit" class="btn btn-primary btn-block mb-3">Submit</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row d-flex justify-content-between">
+                        <div class="col">
+                            <div class="wrapper bg-light ">
+                                <div class="card" style="width: 100%;">
+                                    <img src="{% static 'images/flights-bg.jpg' %}"class="flight-offers-card card-img-top"
+                                        alt="Chicago Skyscrapers" />
+                                    <div class="card-body" style="cursor: pointer;">
+                                        <h5 class="card-title">RA205
+                                            <p class="card-text">Some quick example text to build on the card title and
+                                                make
+                                                up the bulk of the card's content.</p>
+                                    </div>
+                                    <ul class="list-group list-group-light list-group-small" style="cursor: pointer;">
+                                        <li class="list-group-item px-4">Dapibus ac facilisis in</li>
+                                        <li class="list-group-item px-4">Vestibulum at eros</li>
+                                    </ul>
+                                    <!-- Pills navs -->
+                                    <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link" id="tab-login" data-mdb-toggle="pill"
+                                                href="./login.html" role="tab" aria-controls="pills-login"
+                                                aria-selected="true">Login</a>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link" id="tab-register" data-mdb-toggle="pill"
+                                                href="./signup.html" role="tab" aria-controls="pills-register"
+                                                aria-selected="false">Register</a>
+                                        </li>
+                                    </ul>
+                                    <!-- Pills navs -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="wrapper bg-light ">
+                                <div class="card" style="width: 100%;">
+                                    <img src="{% static 'images/flights-bg.jpg' %}class="flight-offers-card card-img-top"
+                                        alt="Chicago Skyscrapers" />
+                                    <div class="card-body" style="cursor: pointer;">
+                                        <h5 class="card-title">RA205
+                                            <p class="card-text">Some quick example text to build on the card title and
+                                                make
+                                                up the bulk of the card's content.</p>
+                                    </div>
+                                    <ul class="list-group list-group-light list-group-small" style="cursor: pointer;">
+                                        <li class="list-group-item px-4">Dapibus ac facilisis in</li>
+                                        <li class="list-group-item px-4">Vestibulum at eros</li>
+                                    </ul>
+                                    <!-- Pills navs -->
+                                    <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link" id="tab-login" data-mdb-toggle="pill"
+                                                href="./login.html" role="tab" aria-controls="pills-login"
+                                                aria-selected="true">Login</a>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link" id="tab-register" data-mdb-toggle="pill"
+                                                href="./signup.html" role="tab" aria-controls="pills-register"
+                                                aria-selected="false">Register</a>
+                                        </li>
+                                    </ul>
+                                    <!-- Pills navs -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="row mb-5">
+                <div class="col-md-12">
+                    <div class="lc-block text-center">
+                        <div editable="rich">
+                            <h2 class="fw-bold">
+                                Need Our Help?
+                                <p></p>
+                                <p> </p>
+                                <p></p>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="lc-block text-center">
+                        <div editable="rich">
+                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu<br>fugiat
+                            nulla pariatur excepteur sint occaecat.&nbsp;<br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-4 text-center offset-lg-2">
+                    <div class="lc-block mb-4">
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="6em" height="6em" fill="currentColor"
+                                viewBox="0 0 16 16" style="" lc-helper="svg-icon" class="text-body">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                                <path
+                                    d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="lc-block mb-6">
+                        <div editable="rich">
+                            <p class="h4">Video Documentation</p>
+                            <p class="">Watch our video tutorials</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 text-center">
+                    <div class="lc-block mb-4">
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                version="1.1" width="6em" height="6em" viewBox="0 0 24 24" style="" lc-helper="svg-icon"
+                                fill="currentColor" class="text-body">
+                                <path
+                                    d="M19.79,15.41C20.74,13.24 20.74,10.75 19.79,8.59L17.05,9.83C17.65,11.21 17.65,12.78 17.06,14.17L19.79,15.41M15.42,4.21C13.25,3.26 10.76,3.26 8.59,4.21L9.83,6.94C11.22,6.35 12.79,6.35 14.18,6.95L15.42,4.21M4.21,8.58C3.26,10.76 3.26,13.24 4.21,15.42L6.95,14.17C6.35,12.79 6.35,11.21 6.95,9.82L4.21,8.58M8.59,19.79C10.76,20.74 13.25,20.74 15.42,19.78L14.18,17.05C12.8,17.65 11.22,17.65 9.84,17.06L8.59,19.79M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8Z">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="lc-block mb-6">
+                        <div editable="rich">
+                            <p class="h4">Faq</p>
+                            <p class="">Check out our faq section</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <footer id="footer">
+        <div class="footer-newsletter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h4>Our Newsletter</h4>
+                        <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <form action="" method="post"> <input type="email" name="email"><input type="submit"
+                                value="Subscribe"> </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Useful Links</h4>
+                        <ul>
+                            <li><i class="fa fa-chevron-right"></i>
+                                <a href="#">Home</a>
+                            </li>
+                            <li><i class="fa fa-chevron-right"></i>
+                                <a href="#">About us</a>
+                            </li>
+                            <li><i class="fa fa-chevron-right"></i>
+                                <a href="#">Contact</a>
+                            </li>
+                            <li><i class="fa fa-chevron-right"></i>
+                                <a href="#">Terms of service</a>
+                            </li>
+                            <li><i class="fa fa-chevron-right"></i>
+                                <a href="#">Privacy policy</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Get Deals</h4>
+                        <ul>
+                            <li><i class="fa-solid fa-plane-up"></i>
+                                <a href="#"> Flights</a>
+                            </li>
+                            <li><i class="fa-solid fa-hotel"></i>
+                                <a href="#"> Hotels</a>
+                            </li>
+                            <li><i class="fa-solid fa-ticket"></i>
+                                <a href="#"> Events</a>
+                            </li>
+                            <li><i class="fa-solid fa-person-hiking"></i>
+                                <a href="#"> Tours</a>
+                            </li>
+                            <li><i class="fa-solid fa-utensils"></i>
+                                <a href="#"> Eateries</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 footer-contact">
+                        <h4>Contact Us</h4>
+                        <p> Madan Bhandari Highway <br> Kathmandu, Bagmati 44600<br> Nepal <br><br>
+                            <strong>Phone:</strong>
+                            +977 9800000000<br> <strong>Email:</strong> info@backoders.com<br>
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 footer-info">
+                        <h3>About Batasey</h3>
+                        <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita
+                            valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+                        <div class="social-links mt-3"> <a href="#" class="twitter"><i
+                                    class="fa-brands fab fab fa-twitter"></i></a>
+                            <a href="#" class="facebook"><i class="fa-brands fa-facebook"></i> <a href="#"
+                                    class="instagram"><i class="fa-brands fa-instagram"></i></i></a> <a href="#"
+                                    class="linkedin"><i class="fa-brands fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright"> &copy; Copyright 2022 <strong><span>Batasey</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits"> Designed by <a href="#">Backoders</a> </div>
+        </div>
+    </footer>
+    <!--Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+        </script>
+</body>
+
+</html>
