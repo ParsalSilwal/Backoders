@@ -1,0 +1,1 @@
+class EditTour2AreYouSureModel {}

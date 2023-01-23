@@ -1,0 +1,1 @@
+class ListcreatefromframeTwo2ItemModel {}
